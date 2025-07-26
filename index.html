@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="backdrop"></div>
+
     <!-- Background Elements -->
     <div class="bg-elements">
       <div class="floating-shapes">
@@ -52,22 +54,26 @@
         </div>
 
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#experience" class="nav-link">Experiences</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-item">
+            <a href="#home" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item">
+            <a href="#experience" class="nav-link">Experiences</a>
+          </li>
+          <li class="nav-item">
+            <a href="#projects" class="nav-link">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
         </ul>
 
         <div class="nav-actions">
-          <button
-            class="theme-toggle"
-            id="theme-toggle"
-            aria-label="Toggle theme"
-          >
+          <button class="theme-toggle" id="theme-toggle">
             <span class="theme-icon"></span>
           </button>
-          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+          <button class="nav-toggle" id="nav-toggle">
             <span></span>
             <span></span>
             <span></span>
@@ -167,8 +173,8 @@
       <div class="container">
         <div class="section-header">
           <span class="section-badge">👨🏻‍💻 About Me</span>
-          <h2 class="section-title">Crafting Digital Solutions</h2>
-          <p class="section-subtitle">
+          <h2 class="section-title fade-in">Crafting Digital Solutions</h2>
+          <p class="section-subtitle slide-in-left">
             Passionate about creating impactful digital experiences that solve
             real-world problems
           </p>
@@ -177,8 +183,8 @@
         <div class="about-content">
           <div class="about-text">
             <div class="text-block">
-              <h3>My Journey</h3>
-              <p>
+              <h3 class="fade-in">My Journey</h3>
+              <p class="slide-in-left">
                 Second-year Bachelor of Information Systems student at UPN
                 "Veteran" Jawa Timur with practical experience in developing web
                 applications using Laravel, Vue.js, and MySQL. I’ve led academic
@@ -187,8 +193,8 @@
                 development competitions
               </p>
             </div>
-            <h3 class="skills-title">My Tech-Stack</h3>
-            <div class="skills-overview">
+            <h3 class="skills-title fade-in">My Tech-Stack</h3>
+            <div class="skills-overview slide-in-left">
               <div class="skill-category">
                 <h4>Frontend</h4>
                 <div class="skill-tags">
@@ -232,7 +238,7 @@
               </div>
             </div>
           </div>
-          <div class="about-visual">
+          <div class="about-visual slide-in-right">
             <div class="education-timeline">
               <div class="timeline-item">
                 <div class="timeline-marker"></div>
@@ -263,8 +269,8 @@
       <div class="container">
         <div class="section-header">
           <span class="section-badge">💼 Experience</span>
-          <h2 class="section-title">Professional Journey</h2>
-          <p class="section-subtitle">
+          <h2 class="section-title fade-in">Professional Journey</h2>
+          <p class="section-subtitle slide-in-left">
             Building expertise through hands-on projects and real-world
             applications
           </p>
@@ -272,7 +278,7 @@
 
         <div class="experience-grid">
           <div class="experience-card">
-            <div class="experience-header">
+            <div class="experience-header fade-in">
               <div class="company-logo">
                 <img src="images/gmp.png" alt="Logo PT. Graha Mutu Persada" />
               </div>
@@ -284,7 +290,7 @@
                 >
               </div>
             </div>
-            <div class="experience-description">
+            <div class="experience-description fade-in">
               <p>
                 Developed a CRM web system with role-based access control,
                 dashboards, and datatables, ensuring efficient performance for
@@ -329,7 +335,7 @@
           </div>
 
           <div class="experience-card">
-            <div class="experience-header">
+            <div class="experience-header fade-in">
               <div class="company-logo">
                 <img src="images/smk1.jpg" alt="Logo SMKN 1 Surabaya" />
               </div>
@@ -341,7 +347,7 @@
                 >
               </div>
             </div>
-            <div class="experience-description">
+            <div class="experience-description fade-in">
               <p>
                 Mentored vocational high school students in preparation for the
                 Web Technology category of the LKS (Student Competency
@@ -363,7 +369,7 @@
           </div>
 
           <div class="experience-card">
-            <div class="experience-header">
+            <div class="experience-header fade-in">
               <div class="company-logo">
                 <img src="images/inosoft.jpg" alt="Logo Inosoft" />
               </div>
@@ -375,7 +381,7 @@
                 >
               </div>
             </div>
-            <div class="experience-description">
+            <div class="experience-description fade-in">
               <p>
                 Contributed to multiple survey and reporting systems as part of
                 the Virtusee project
@@ -437,7 +443,7 @@
           </div>
 
           <div class="experience-card">
-            <div class="experience-header">
+            <div class="experience-header fade-in">
               <div class="company-logo">
                 <img src="images/inosoft.jpg" alt="Logo Inosoft" />
               </div>
@@ -449,7 +455,7 @@
                 >
               </div>
             </div>
-            <div class="experience-description">
+            <div class="experience-description fade-in">
               <p>
                 Contributed to the development and maintenance of a web-based
                 field team performance monitoring system
@@ -506,8 +512,8 @@
       <div class="container">
         <div class="section-header">
           <span class="section-badge">🎨 Portfolio</span>
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">
+          <h2 class="section-title fade-in">Featured Projects</h2>
+          <p class="section-subtitle slide-in-left">
             A showcase of my recent work and technical capabilities
           </p>
         </div>
@@ -604,7 +610,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-project="fastkantin-mobile">
+          <div class="project-card">
             <div class="project-image">
               <img
                 src="images/projects/vaccinify.png"
@@ -649,7 +655,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-project="fastkantin-mobile">
+          <div class="project-card">
             <div class="project-image">
               <img src="images/projects/markas.jpg" alt="Markas Rest API" />
             </div>
@@ -695,8 +701,9 @@
     <section id="contact" class="contact">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Let's Connect</h2>
-          <p class="section-subtitle">
+          <span class="section-badge">📞 Contact</span>
+          <h2 class="section-title fade-in">Let's Connect!</h2>
+          <p class="section-subtitle slide-in-left">
             I'm always open to discussing new opportunities, collaborations, or
             just having a chat about technology and design.
           </p>
@@ -712,7 +719,11 @@
             </div>
             <span class="contact-card-label">WhatsApp</span>
           </a>
-          <a href="mailto:hafidz10032005@gmail.com" class="contact-card">
+          <a
+            href="mailto:hafidz10032005@gmail.com"
+            target="_blank"
+            class="contact-card"
+          >
             <div class="contact-card-icon email">
               <i class="fas fa-envelope"></i>
             </div>
