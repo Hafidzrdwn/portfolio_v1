@@ -1,8 +1,9 @@
-// DOM Elements
 const navbar = document.getElementById("navbar")
 const navToggle = document.getElementById("nav-toggle")
 const navMenu = document.getElementById("nav-menu")
 const themeToggle = document.getElementById("theme-toggle")
+const downloadCVBtn = document.getElementById("btn-download-cv")
+
 
 // Theme Management
 class ThemeManager {
@@ -241,6 +242,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add loading animation
   document.body.style.opacity = "0"
   document.body.style.transition = "opacity 0.5s ease"
+
+  downloadCVBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+
+  fetch("CV_Hafidz_Ridwan_Cahya.pdf", { method: "HEAD" })
+    .then((res) => {
+      if (res.ok) {
+        const link = document.createElement("a")
+        link.href = "CV_Hafidz_Ridwan_Cahya.pdf"
+        link.download = "CV_Hafidz_Ridwan_Cahya.pdf"
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      } else {
+        alert("CV not available yet. Please contact me directly.")
+      }
+    })
+    .catch(() => {
+      alert("CV download failed or not available. Please contact me directly.")
+    })
+})
 
   setTimeout(() => {
     document.body.style.opacity = "1"
