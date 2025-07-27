@@ -31,10 +31,13 @@ class ThemeManager {
 // Navigation Management
 class NavigationManager {
   constructor() {
+    this.scrollProgress = null;
     this.init();
   }
 
   init() {
+    this.scrollProgress = document.createElement("div");
+    this.setupProgressBar();
     this.setupMobileMenu();
     this.setupScrollEffects();
     this.setupSmoothScrolling();
@@ -65,13 +68,26 @@ class NavigationManager {
     });
   }
 
+  setupProgressBar() {
+    this.scrollProgress.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--gradient-primary);
+    z-index: 1500;
+    transition: width 0.1s ease;
+   `;
+    document.body.appendChild(this.scrollProgress);
+  }
+
   setupScrollEffects() {
     let lastScrollY = window.scrollY;
 
     window.addEventListener("scroll", () => {
       const currentScrollY = window.scrollY;
 
-      // Add scrolled class for styling
       if (currentScrollY > 50) {
         navbar.classList.add("scrolled");
       } else {
@@ -79,6 +95,12 @@ class NavigationManager {
       }
 
       lastScrollY = currentScrollY;
+
+      // progress bar
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      this.scrollProgress.style.width = scrollPercent + "%";
     });
   }
 
@@ -165,11 +187,13 @@ class AnimationManager {
           if (entry.target.classList.contains("contact-card")) {
             let delay = 0;
 
-            document.querySelectorAll(".contact-card").forEach((card, index) => {
-              card.classList.remove("scale-in");
-              card.classList.remove("visible");
-              delay += index * 0.15;
-            });
+            document
+              .querySelectorAll(".contact-card")
+              .forEach((card, index) => {
+                card.classList.remove("scale-in");
+                card.classList.remove("visible");
+                delay += index * 0.15;
+              });
 
             setTimeout(() => {
               document.querySelectorAll(".contact-card").forEach((card) => {
@@ -177,7 +201,6 @@ class AnimationManager {
               });
             }, delay * 1000);
           }
-
         }
       });
     }, this.observerOptions);
@@ -191,12 +214,12 @@ class AnimationManager {
 
   setupScrollAnimations() {
     document.querySelectorAll(".experience-card").forEach((card, index) => {
-      card.classList.add((index % 2 === 0 ? "slide-in-left" : "slide-in-right"));
+      card.classList.add(index % 2 === 0 ? "slide-in-left" : "slide-in-right");
     });
 
     document.querySelectorAll(".project-card").forEach((card, index) => {
       card.classList.add("fade-in");
-      card.style.transitionDelay = `${index * 0.10}s`;
+      card.style.transitionDelay = `${index * 0.1}s`;
     });
 
     document.querySelectorAll(".contact-card").forEach((card, index) => {
