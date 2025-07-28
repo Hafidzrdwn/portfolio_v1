@@ -1086,7 +1086,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
 }
 
@@ -1097,18 +1097,14 @@ section {
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  max-height: 45rem;
 }
 
 .project-card:hover {
   transform: translateY(-8px) !important;
   box-shadow: var(--shadow-xl);
-}
-
-.project-card.featured {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
 }
 
 .project-image {
@@ -1126,11 +1122,20 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform var(--transition);
 }
 
 .project-content {
-  padding: var(--space-xl);
+  flex: 1;
+  padding: var(--space-xl) var(--space-xl) calc(var(--space-2xl) + 3rem);
+  position: relative;
+}
+
+.project-content > .btn {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 1;
 }
 
 .project-header {
@@ -1462,10 +1467,6 @@ section {
     grid-template-columns: 1fr .5fr;
     gap: var(--space-2xl);
   }
-
-  .project-card.featured {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1493,6 +1494,10 @@ section {
 
   .nav-toggle {
     display: flex;
+  }
+
+  .scroll-progress {
+    height: 5px !important;
   }
 
   .hero-actions {
@@ -1558,6 +1563,10 @@ section {
 
   .experience-card {
     padding: var(--space-lg);
+  }
+
+  .project-card {
+    max-height: 55rem;
   }
 }
 

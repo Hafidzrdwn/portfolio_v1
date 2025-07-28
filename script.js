@@ -37,6 +37,7 @@ class NavigationManager {
 
   init() {
     this.scrollProgress = document.createElement("div");
+    this.scrollProgress.className = "scroll-progress";
     this.setupProgressBar();
     this.setupMobileMenu();
     this.setupScrollEffects();
