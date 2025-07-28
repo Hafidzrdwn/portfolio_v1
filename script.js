@@ -75,7 +75,7 @@ class NavigationManager {
     left: 0;
     width: 0%;
     height: 3px;
-    background: var(--gradient-test);
+    background: var(--gradient-primary);
     z-index: 1500;
     transition: width 0.1s ease;
    `;
@@ -83,18 +83,14 @@ class NavigationManager {
   }
 
   setupScrollEffects() {
-    let lastScrollY = window.scrollY;
-
     window.addEventListener("scroll", () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > 50) {
+      if (currentScrollY > 100) {
         navbar.classList.add("scrolled");
       } else {
         navbar.classList.remove("scrolled");
       }
-
-      lastScrollY = currentScrollY;
 
       // progress bar
       const scrollTop = window.pageYOffset;
