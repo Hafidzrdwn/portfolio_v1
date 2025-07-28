@@ -75,7 +75,7 @@ class NavigationManager {
     left: 0;
     width: 0%;
     height: 3px;
-    background: var(--gradient-primary);
+    background: var(--gradient-test);
     z-index: 1500;
     transition: width 0.1s ease;
    `;
