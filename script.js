@@ -169,6 +169,7 @@ class AnimationManager {
   init() {
     this.setupScrollAnimations();
     this.setupIntersectionObserver();
+    this.setupCounterAnimation();
   }
 
   setupIntersectionObserver() {
@@ -225,6 +226,49 @@ class AnimationManager {
       .forEach((el) => {
         observer.observe(el);
       });
+  }
+
+  setupCounterAnimation() {
+    const counters = document.querySelectorAll(".hero-stats .stat");
+
+    counters.forEach((counter) => {
+      const target = Number.parseInt(counter.getAttribute("data-count"))
+      const numberElement = counter.querySelector(".stat-number")
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.animateCounter(counter, target, numberElement)
+            observer.unobserve(counter)
+          }
+        })
+      })
+
+      observer.observe(counter)
+    })
+  }
+
+  animateCounter(element, target, numberElement) {
+    let current = 0
+    const increment = target / 100
+    const duration = 2000
+    const stepTime = duration / 100
+
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= target) {
+        current = target
+        clearInterval(timer)
+      }
+
+      const suffix = element.querySelector(".stat-number").textContent.includes("%")
+        ? "%"
+        : element.querySelector(".stat-number").textContent.includes("+")
+          ? "+"
+          : ""
+
+      numberElement.textContent = Math.floor(current) + suffix
+    }, stepTime)
   }
 
   setupScrollAnimations() {
