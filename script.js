@@ -198,6 +198,24 @@ class AnimationManager {
               });
             }, delay * 1000);
           }
+
+          if (entry.target.classList.contains("project-card")) {
+            let delay = 0;
+
+            document
+              .querySelectorAll(".project-card")
+              .forEach((card, index) => {
+                card.classList.remove("fade-in");
+                card.classList.remove("visible");
+                delay += index * 0.1;
+              });
+
+            setTimeout(() => {
+              document.querySelectorAll(".project-card").forEach((card) => {
+                card.removeAttribute("style");
+              });
+            }, delay * 1000);
+          }
         }
       });
     }, this.observerOptions);
