@@ -170,6 +170,7 @@ class AnimationManager {
     this.setupScrollAnimations();
     this.setupIntersectionObserver();
     this.setupCounterAnimation();
+    this.setupRippleEffectContact();
   }
 
   setupIntersectionObserver() {
@@ -294,6 +295,38 @@ class AnimationManager {
         child.classList.add("visible");
       }, index * 100);
     });
+  }
+
+  setupRippleEffectContact() {
+    const contactCards = document.querySelectorAll(".contact-card");
+
+    contactCards.forEach((card, index) => {
+      card.addEventListener("mouseenter", (e) => {
+        const ripple = document.createElement("div")
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(66, 211, 146, 0.3);
+          transform: scale(0);
+          animation: contactRipple 0.6s linear;
+          pointer-events: none;
+          z-index: 0;
+        `
+
+        const rect = card.getBoundingClientRect()
+        const size = Math.max(rect.width, rect.height)
+        ripple.style.width = ripple.style.height = size + "px"
+        ripple.style.left = "50%"
+        ripple.style.top = "50%"
+        ripple.style.transform = "translate(-50%, -50%) scale(0)"
+
+        card.appendChild(ripple)
+
+        setTimeout(() => {
+          ripple.remove()
+        }, 600)
+      })
+    })
   }
 }
 
