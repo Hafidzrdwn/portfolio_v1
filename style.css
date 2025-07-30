@@ -1480,12 +1480,12 @@ section {
 
   .hero-visual {
     margin: 15px auto 0;
-    perspective: none;
+    perspective: 1500px;
     animation: slideInRight 0.8s ease-out 0.4s both;
   }
 
   .profile-card {
-    transform: none;
+    transform: rotateX(15deg);
   }
 
   .about-content {
@@ -1523,6 +1523,10 @@ section {
 
   .scroll-progress {
     height: 5px !important;
+  }
+
+  .hero {
+    min-height: max-content;
   }
 
   .hero-actions {
@@ -1568,6 +1572,13 @@ section {
 
   .hero {
     padding: var(--space-4xl) 0 0;
+  }
+
+  .hero-actions > a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .section-header {
