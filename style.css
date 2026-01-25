@@ -836,6 +836,10 @@ section {
 }
 
 .text-block {
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: var(--space-xl);
 }
 
@@ -857,6 +861,15 @@ section {
 .text-block p {
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+.text-block > p > .highlight {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .text-block > p > .highlight {
+  color: var(--primary);
 }
 
 .skills-title {
