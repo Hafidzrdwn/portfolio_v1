@@ -156,6 +156,99 @@ class NavigationManager {
   }
 }
 
+class ExperienceManager {
+  constructor() {
+    this.navItems = document.querySelectorAll(".exp-nav-item");
+    this.details = document.querySelectorAll(".exp-detail");
+    if (this.navItems.length === 0) return;
+    this.init();
+  }
+
+  init() {
+    // 1. Click Handling: Smooth Scroll
+    this.navItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = item.getAttribute("data-id");
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          this.isManualScroll = true;
+          
+          const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY - 150;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth"
+          });
+
+          this.updateActiveState(targetId);
+
+          setTimeout(() => {
+            this.isManualScroll = false;
+          }, 1000);
+        }
+      });
+    });
+
+    this.visibleSections = new Map();
+    this.isManualScroll = false;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px", 
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (this.isManualScroll) return;
+
+      entries.forEach((entry) => {
+        this.visibleSections.set(entry.target.id, entry.intersectionRatio);
+      });
+
+      this.determineActiveSection();
+    }, observerOptions);
+
+    this.details.forEach((detail) => observer.observe(detail));
+  }
+
+  determineActiveSection() {
+    let maxRatio = 0;
+    let activeId = null;
+
+    for (const [id, ratio] of this.visibleSections) {
+      if (ratio > maxRatio) {
+        maxRatio = ratio;
+        activeId = id;
+      }
+    }
+
+    if (activeId && maxRatio > 0.1) {
+       this.updateActiveState(activeId);
+    }
+  }
+
+  updateActiveState(activeId) {
+    this.navItems.forEach((item) => {
+      item.classList.remove("active");
+      if (item.getAttribute("data-id") === activeId) {
+        item.classList.add("active");
+        
+        if (window.innerWidth < 768) {
+             item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+
+    this.details.forEach((detail) => {
+        detail.classList.remove("active");
+        if (detail.getAttribute("id") === activeId) {
+            detail.classList.add("active");
+        }
+    });
+  }
+}
+
 // Animation Manager
 class AnimationManager {
   constructor() {
@@ -373,6 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
   new NavigationManager();
   new AnimationManager();
   new GreetingManager();
+  new ExperienceManager();
 
   const blurBackdrop = document.querySelector(".backdrop");
 
