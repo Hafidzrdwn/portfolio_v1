@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -164,9 +164,11 @@
               Available for hire
             </div>
             <h1 class="hero-title">
-              <span class="title-line">Hi, I'm</span>
-              <span class="title-name">Hafidz Ridwan Cahya</span>
-              <span class="title-role">Web Developer</span>
+              <span class="greeting-wrapper">
+                <span id="greeting-text" class="greeting-change">Hi</span>
+                <span class="wave-emoji">👋🏻</span>
+              </span>
+              <span class="title-name">I'm Hafidz Ridwan Cahya</span>
             </h1>
             <p class="hero-description">
               As a Web Developer, I am passionate about creating innovative web
@@ -221,39 +223,27 @@
             </div>
           </div>
           <div class="hero-visual">
-            <div class="profile-card">
-              <div class="profile-header">Nice to Meet You! 👋🏻</div>
-
-              <div class="profile-image">
-                <img src="images/hero.webp" alt="Hafidz Ridwan Cahya" />
-                <div class="profile-ring"></div>
+            <div class="clean-profile-container">
+              <div class="profile-frame">
+                <img
+                  src="images/hero.webp"
+                  alt="Hafidz Ridwan Cahya"
+                  class="clean-profile-img"
+                />
               </div>
 
-              <div class="tech-stack">
-                <div
-                  class="tech-item"
-                  data-tooltip="PHP Framework for Web Artisans"
-                >
-                  <span class="tech-item-text">Laravel</span>
-                </div>
-                <div
-                  class="tech-item"
-                  data-tooltip="Progressive JavaScript Framework"
-                >
-                  <span class="tech-item-text">Vue JS</span>
-                </div>
-                <div
-                  class="tech-item"
-                  data-tooltip="Utility-First CSS Framework"
-                >
-                  <span class="tech-item-text">Tailwind CSS</span>
-                </div>
-                <div
-                  class="tech-item"
-                  data-tooltip="Relational Database Management"
-                >
-                  <span class="tech-item-text">MySQL</span>
-                </div>
+              <!-- Floating Tech Badges -->
+              <div class="floating-badge badge-1">
+                <i class="fa-brands fa-laravel"></i>
+                <span>Laravel</span>
+              </div>
+              <div class="floating-badge badge-2">
+                <i class="fa-brands fa-vuejs"></i>
+                <span>Vue.js</span>
+              </div>
+              <div class="floating-badge badge-3">
+                <i class="fa-solid fa-database"></i>
+                <span>MySQL</span>
               </div>
             </div>
           </div>

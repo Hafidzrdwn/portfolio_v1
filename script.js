@@ -330,11 +330,49 @@ class AnimationManager {
   }
 }
 
+// Greeting Animation Manager
+class GreetingManager {
+  constructor() {
+    this.greetings = [
+      "Hello",
+      "Halo",
+      "Bonjour",
+      "Hola",
+      "Ciao",
+      "Konnichiwa",
+      "Annyeong",
+      "Namaste",
+    ];
+    this.current = 0;
+    this.element = document.getElementById("greeting-text");
+    if (!this.element) return;
+    this.init();
+  }
+
+  init() {
+    setInterval(() => this.next(), 2500);
+  }
+
+  next() {
+    this.element.classList.add("fade-out");
+    setTimeout(() => {
+      this.current = (this.current + 1) % this.greetings.length;
+      this.element.textContent = this.greetings[this.current];
+      this.element.classList.remove("fade-out");
+      this.element.classList.add("fade-in");
+    }, 300);
+    setTimeout(() => {
+      this.element.classList.remove("fade-in");
+    }, 600);
+  }
+}
+
 // Initialize all managers when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   new ThemeManager();
   new NavigationManager();
   new AnimationManager();
+  new GreetingManager();
 
   const blurBackdrop = document.querySelector(".backdrop");
 
