@@ -290,7 +290,7 @@ body {
 
 /* Container */
 .container {
-  max-width: 1340px;
+  max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -534,7 +534,7 @@ body {
   font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
   animation: slideInUp 0.8s ease-out;
 }
 
@@ -550,7 +550,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: clamp(1.5rem, 2.5vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-primary);
@@ -624,7 +624,7 @@ body {
 
 .title-name {
   display: block;
-  font-size: clamp(1.6rem, 3.5vw, 4rem);
+  font-size: clamp(1.6rem, 4.2vw, 3.5rem);
   font-weight: 800;
   color: var(--text-primary);
   animation: slideInUp 0.8s ease-out 0.4s both;
@@ -645,12 +645,11 @@ body {
   border-radius: var(--radius-full);
   object-fit: cover;
   box-shadow: var(--shadow-lg);
-  animation: fadeIn 0.8s ease-out 0.6s both;
 }
 
 .hero-description {
   text-align: center;
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
@@ -1481,6 +1480,11 @@ span.highlight {
 
   .hero {
     min-height: max-content;
+  }
+
+  .hero-description {
+    max-width: 600px;
+    font-size: var(--font-size-lg);
   }
 
   .hero-actions {
