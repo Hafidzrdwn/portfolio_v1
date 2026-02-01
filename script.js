@@ -427,6 +427,7 @@ class AnimationManager {
 class GreetingManager {
   constructor() {
     this.greetings = [
+      "Hi",
       "Hello",
       "Halo",
       "Bonjour",
@@ -443,6 +444,7 @@ class GreetingManager {
   }
 
   init() {
+    this.element.textContent = this.greetings[this.current];
     setInterval(() => this.next(), 2500);
   }
 
@@ -460,7 +462,6 @@ class GreetingManager {
   }
 }
 
-// Initialize all managers when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   new ThemeManager();
   new NavigationManager();
