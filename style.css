@@ -314,7 +314,7 @@ body {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   transition: color var(--transition);
   position: relative;
 }
@@ -628,19 +628,24 @@ body {
 
 /* Buttons */
 .btn {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-md) var(--space-xl);
   border: none;
   border-radius: var(--radius-md);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+}
+
+.btn.disabled {
+  opacity: .6;
+  cursor: not-allowed;
 }
 
 .btn::before {
@@ -1020,20 +1025,16 @@ span.highlight {
 
 .project-image {
   position: relative;
-  height: 250px;
+  height: 300px;
   overflow: hidden;
   background: var(--bg-tertiary);
-}
-
-.featured .project-image {
-  height: 400px;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   transition: transform var(--transition);
 }
 
@@ -1474,12 +1475,12 @@ span.highlight {
   }
 
   .section-subtitle {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     max-width: 95%;
   }
 
   .hero-description {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
   }
   .hero-stats {
     gap: var(--space-md);
